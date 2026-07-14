@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#fff7f8" />
+  <title>想和你约个会</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+
+  <main class="app-shell">
+    <header class="hero">
+      <div class="mini-label">A LITTLE DATE WITH YOU</div>
+      <div class="avatar-row" aria-label="邀请双方">
+        <div class="avatar" id="fromAvatar">文</div>
+        <div class="heart-line"><span>♥</span></div>
+        <div class="avatar avatar-light" id="toAvatar">你</div>
+      </div>
+      <h1><span id="toName">特别的你</span>，<br />想和你约个会</h1>
+      <p id="openingText" class="opening-text">不是群发，也不是临时起意。只是认真地，想把一段时间留给你。</p>
+      <button id="startButton" class="primary-btn hero-btn">看看这份邀请</button>
+    </header>
+
+    <section id="planner" class="planner hidden" aria-live="polite">
+      <div class="progress-wrap">
+        <div class="progress-meta">
+          <span id="stepLabel">第 1 步，共 4 步</span>
+          <span id="progressPercent">25%</span>
+        </div>
+        <div class="progress-track"><div id="progressBar" class="progress-bar"></div></div>
+      </div>
+
+      <section class="step active" data-step="1">
+        <div class="section-heading">
+          <span class="section-icon">✦</span>
+          <div>
+            <p class="eyebrow">DATE IDEA</p>
+            <h2>这次想做什么？</h2>
+          </div>
+        </div>
+        <div id="activityGrid" class="activity-grid"></div>
+        <label class="field custom-field">
+          <span>或者写下你的想法</span>
+          <input id="customActivity" type="text" maxlength="40" placeholder="例如：一起去江边吹风" />
+        </label>
+      </section>
+
+      <section class="step" data-step="2">
+        <div class="section-heading">
+          <span class="section-icon">◷</span>
+          <div>
+            <p class="eyebrow">PICK A DAY</p>
+            <h2>哪一天适合你？</h2>
+          </div>
+        </div>
+        <div id="dateGrid" class="date-grid"></div>
+        <label class="field custom-field">
+          <span>选择其他日期</span>
+          <input id="customDate" type="date" />
+        </label>
+      </section>
+
+      <section class="step" data-step="3">
+        <div class="section-heading">
+          <span class="section-icon">☾</span>
+          <div>
+            <p class="eyebrow">PICK A TIME</p>
+            <h2>几点见面比较好？</h2>
+          </div>
+        </div>
+        <div id="timeGrid" class="time-grid"></div>
+        <label class="field custom-field">
+          <span>选择其他时间</span>
+          <input id="customTime" type="time" />
+        </label>
+      </section>
+
+      <section class="step" data-step="4">
+        <div class="section-heading">
+          <span class="section-icon">♡</span>
+          <div>
+            <p class="eyebrow">ONE MORE THING</p>
+            <h2>给这次约会加一点期待</h2>
+          </div>
+        </div>
+
+        <div class="promise-card">
+          <p>我会负责</p>
+          <div class="promise-list">
+            <span>✓ 提前做好安排</span>
+            <span>✓ 准时出现</span>
+            <span>✓ 认真听你说话</span>
+            <span>✓ 不让你尴尬</span>
+          </div>
+        </div>
+
+        <label class="field custom-field note-field">
+          <span>你还有什么小要求？</span>
+          <textarea id="noteInput" maxlength="120" placeholder="例如：不要太早、想吃辣、需要来接我……"></textarea>
+        </label>
+      </section>
+
+      <div class="navigation-row">
+        <button id="backButton" class="ghost-btn hidden">上一步</button>
+        <button id="nextButton" class="primary-btn">下一步</button>
+      </div>
+    </section>
+
+    <section id="successPanel" class="success-panel hidden">
+      <div class="success-mark">✓</div>
+      <p class="eyebrow">DATE CONFIRMED</p>
+      <h2>这次约会，先被好好期待了</h2>
+      <p class="success-subtitle">把下面这张确认卡发给 <span id="fromNameInSuccess">文龙</span>，邀请就正式生效。</p>
+
+      <article id="ticket" class="ticket">
+        <div class="ticket-top">
+          <span class="ticket-tag">OUR DATE</span>
+          <span id="ticketCode">#DATE001</span>
+        </div>
+        <div class="ticket-main">
+          <div class="ticket-icon" id="ticketIcon">☕</div>
+          <div>
+            <p id="ticketActivity" class="ticket-activity">一起喝咖啡</p>
+            <p id="ticketDateTime" class="ticket-datetime">待选择</p>
+          </div>
+        </div>
+        <div id="ticketNote" class="ticket-note hidden"></div>
+        <div class="ticket-names">
+          <span id="ticketFrom">文龙</span>
+          <span>♡</span>
+          <span id="ticketTo">特别的你</span>
+        </div>
+      </article>
+
+      <div class="success-actions">
+        <button id="shareButton" class="primary-btn">把选择发给 TA</button>
+        <button id="calendarButton" class="ghost-btn">加入手机日历</button>
+        <button id="restartButton" class="text-btn">重新选择</button>
+      </div>
+      <p id="copyHint" class="copy-hint"></p>
+    </section>
+
+    <footer>
+      <span>Made with care by <strong id="footerName">文龙</strong></span>
+      <span>·</span>
+      <span id="year"></span>
+    </footer>
+  </main>
+
+  <div id="toast" class="toast" role="status"></div>
+  <div id="confettiLayer" class="confetti-layer" aria-hidden="true"></div>
+
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
