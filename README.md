@@ -57,17 +57,6 @@ window.DATE_APP_CONFIG = {
 
 最简单的方法：直接双击 `index.html`。
 
-推荐方式：在项目目录打开终端，运行：
-
-```bash
-python -m http.server 8080
-```
-
-然后浏览器打开：
-
-```text
-http://localhost:8080
-```
 
 ## 3. 当前版本的数据方式
 
